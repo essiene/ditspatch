@@ -16,7 +16,7 @@ public class TestDeclaration extends TestCase
         Declaration d = new Declaration();
         d.addText("one");
 
-        assertEquals("one", d.getPattern());
+        assertEquals("^one$", d.getPattern());
     }
 
     public void testAddTextSubsequent()
@@ -25,10 +25,10 @@ public class TestDeclaration extends TestCase
         d.addText("one");
         d.addText("two");
 
-        assertEquals("one/two", d.getPattern());
+        assertEquals("^one/two$", d.getPattern());
 
         d.addText("three");
-        assertEquals("one/two/three", d.getPattern());
+        assertEquals("^one/two/three$", d.getPattern());
     }
 
     public void testVariablePatternRegexp()

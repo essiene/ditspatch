@@ -20,6 +20,6 @@ public class TestAstText extends TestCase
         t = new Text("two");
         d = t.process(d);
 
-        assertEquals("one/two", d.getPattern());
+        assertEquals("^one/two$", d.getPattern());
     }
 }

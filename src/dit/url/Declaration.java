@@ -72,10 +72,11 @@ public class Declaration
     private void addPattern(String s)
     {
         if(this.pattern.equals("")) {
-            this.pattern += s;
+            this.pattern += "^" + s + "$";
         } else {
+            this.pattern = this.pattern.substring(0, this.pattern.length() - 1); //remove terminating $ sign
             this.pattern += "/";
-            this.pattern += s;
+            this.pattern += s + "$";
         }
     }
 

@@ -44,6 +44,6 @@ public class TestAstVariable extends TestCase
         d = t.process(d);
         d = v.process(d);
 
-        assertEquals("one/(\\d+)", d.getPattern());
+        assertEquals("^one/(\\d+)$", d.getPattern());
     }
 }
