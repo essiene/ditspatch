@@ -34,4 +34,16 @@ public class TestAstVariable extends TestCase
         } catch (IllegalArgumentException ex) {
         }
     }
+
+    public void testProcess()
+    {
+        Declaration d = new Declaration();
+        Text t = new Text("one");
+        Variable v = new Variable("var1", "Integer");
+
+        d = t.process(d);
+        d = v.process(d);
+
+        assertEquals("one/(\\d+)", d.getPattern());
+    }
 }
