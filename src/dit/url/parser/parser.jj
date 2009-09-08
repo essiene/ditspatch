@@ -49,7 +49,10 @@ Ast UrlComponent():
     Ast ast;
 }
 {
-    t=<TEXT> { ast = new Text(t.image); } 
+    t=<TEXT> { 
+        ast = new Text(t.image); 
+        return ast;
+    } 
     | 
     ast=VariableDeclaration()
 
