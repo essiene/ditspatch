@@ -1,9 +1,11 @@
 PARSER_BEGIN(Parser)
 
-package dit.url.ast;
+package dit.url.parser;
 
 import java.io.*;
 import java.util.*;
+
+import dit.url.ast.*;
 
 public class Parser
 {
