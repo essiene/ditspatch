@@ -45,6 +45,11 @@ public class Variable implements Ast
         return this.type;
     }
 
+    public String toString()
+    {
+        return "AST{name:" + this.name + ",type:" + this.type.toString() + "}";
+    }
+
     public Declaration process(Declaration d)
     {
         d.addVariable(name, type);

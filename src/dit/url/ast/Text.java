@@ -16,4 +16,14 @@ public class Text implements Ast
         d.addText(value);
         return d;
     }
+
+    public String getValue()
+    {
+        return this.value;
+    }
+
+    public String toString()
+    {
+        return "AST{value:" + this.value + "}";
+    }
 }
