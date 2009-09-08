@@ -66,7 +66,7 @@ Ast VariableDeclaration():
     String type = "String";
 }
 {
-    t=<VARIABLE> { var = t.image; }  
+    t=<VARIABLE> { var = t.image.substring(1); }  
     (
      <TYPE_DECLARATOR> 
      t=<TYPE> { type = t.image; }
