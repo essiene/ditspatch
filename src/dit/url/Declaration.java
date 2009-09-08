@@ -33,6 +33,11 @@ public class Declaration
         this.addPattern(type);
     }
 
+    public String getPattern()
+    {
+        return this.pattern;
+    }
+
     public static String toPattern(Class c)
     {
         if(c == Integer.class) {
