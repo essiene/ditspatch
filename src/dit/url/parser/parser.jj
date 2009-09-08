@@ -1,0 +1,71 @@
+PARSER_BEGIN(Parser)
+
+package dit.url.ast;
+
+import java.io.*;
+import java.util.*;
+
+public class Parser
+{
+    public void ReInit(String s)
+    {
+        ReInit(new StringReader(s));
+    }
+}
+
+PARSER_END(Parser)
+
+TOKEN : { <VARIABLE : "$" (["a" - "z"] | ["A" - "Z"] | "_")(["a" - "z"] | ["A" -
+        "Z"] | "_" | ["0" - "9"])+> }
+
+TOKEN: {<TYPE: ("Integer" | "String" | "Character" | "Boolean")>}
+
+TOKEN: {<TYPE_DECLARATOR: ":">}
+TOKEN: {<FORWARD_SLASH: "/">}
+
+TOKEN: {<TEXT: (["a" - "z"] | ["A" - "Z"] | ["0" - "9"] | "_")+> }
+
+
+List<Ast> UrlDeclaration():
+{
+    List<Ast> list = new LinkedList();
+    Ast ast;
+}
+{
+    ast = UrlComponent() { list.add(ast); }
+    (
+     <FORWARD_SLASH> 
+     ast=UrlComponent() {list.add(ast); }
+    )*
+
+    { return list; }
+}
+
+Ast UrlComponent():
+{
+    Token t;
+    Ast ast;
+}
+{
+    t=<TEXT> { ast = new Text(t.image); } 
+    | 
+    ast=VariableDeclaration()
+
+    {return ast;}
+}
+
+Ast VariableDeclaration():
+{
+    Token t;
+    String var;
+    String type = "String";
+}
+{
+    t=<VARIABLE> { var = t.image; }  
+    (
+     <TYPE_DECLARATOR> 
+     t=<TYPE> { type = t.image; }
+    )?
+
+    { return new Variable(var, type); }
+}

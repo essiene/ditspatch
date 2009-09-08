@@ -1,3 +1,5 @@
 *.class
 build
 dist
+lib
+src/dit/url/parser/*.java
