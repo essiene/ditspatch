@@ -1,0 +1,70 @@
+Ditspatch is a Url Dispatcher library in the spirit of Luke Arno's Selector
+library for Python rather than Django routing. There are differences ofcourse,
+but the general idea is the same, and indeed it is inpired by that library.
+
+
+Url Declarations
+================
+
+The core of Ditspatch is built around Url Declarations which look like:
+
+    user/$username:String/activate
+    user/$username:String/game/$game_id:Integer
+    user/$username
+
+Ditspatch uses these declarations to build regular expressions that will match
+the following urls for instance:
+
+    /user/user1/activate
+    /user/user1/activate/
+
+    /user/user2/game/1
+    /user/user2/game/100/
+
+    /user/user3
+    /user/user3/
+
+Named Value Extraction
+======================
+
+After matching urls against the declarations, Ditspatch will also extract the
+values of the variables in those matched positions in the url. So for instance
+the following declaration applied to the actual url below:
+
+Declaration: user/$username:String/game/$game_id:Integer
+Actual Url: /user/user2/game/100/
+
+Will yield a String username with value = "user2" and an Integer game_id with
+value = 100
+
+Class Dispatch
+==============
+
+Finally, Ditspatch contains a small routing framework which can dispatch
+incoming HTTP requests to Java class object, passing them the proper variables
+extracted from the incoming URLs with their proper type signature.
+
+For instance, supposing we have the below:
+
+Declaration: user/$username:String/game/$game_id:Integer
+Actual Url: /user/user2/game/100/
+Http Method: GET
+Destination Object: UserGame.class
+
+Router r = new Router();
+r.addRoute("user/$username:String/game/$game_id:Integer", UserGame.class);
+
+// Later on we can call the dispatch method:
+
+r.dispatchGet("/user/user2/game/100/", ...);
+
+This will result in a call to a previously defined GET method in the UserGame
+class which will have to be defined thus:
+
+public class UserGame
+{
+    public IResponse GET(IRequest req, String username, Integer game_id)
+    {
+        //do funky stuff here and return a Response object
+    }
+}
