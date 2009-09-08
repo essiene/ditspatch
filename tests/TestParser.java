@@ -27,7 +27,6 @@ public class TestParser extends TestCase
 
         List<Ast> l = p.UrlDeclaration();
 
-        assertEquals(1, l.size());
         assertEquals("[AST{value:one}]", l.toString());
     }
 
@@ -37,7 +36,6 @@ public class TestParser extends TestCase
 
         List<Ast> l = p.UrlDeclaration();
 
-        assertEquals(1, l.size());
         assertEquals("[AST{name:one,type:class java.lang.String}]", l.toString());
     }
 
@@ -47,7 +45,6 @@ public class TestParser extends TestCase
 
         List<Ast> l = p.UrlDeclaration();
 
-        assertEquals(1, l.size());
         assertEquals("[AST{name:one,type:class java.lang.Boolean}]", l.toString());
     }
 }
