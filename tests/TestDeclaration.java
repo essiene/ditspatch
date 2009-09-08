@@ -66,6 +66,17 @@ public class TestDeclaration extends TestCase
         checkPattern(d.getPattern(), "one/123/false", 2);
     }
 
+    public void testAddAlreadyDefinedVariable()
+    {
+        Declaration d = new Declaration();
+        d.addVariable("var1", Integer.class);
+        try {
+            d.addVariable("var1", Boolean.class);
+            fail("'var1' already defined and should not be added");
+        } catch (ScopeException ex) {
+        }
+    }
+
     private static void checkPattern(Class c, String s)
     {
         checkPattern(Declaration.toPattern(c), s, 1);
