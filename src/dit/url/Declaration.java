@@ -38,6 +38,16 @@ public class Declaration
         return this.pattern;
     }
 
+    public Class getVariableType(String s)
+    {
+        return this.variables.get(s);
+    }
+
+    public String getGroupName(int i)
+    {
+        return this.groups.get(i);
+    }
+
     public static String toPattern(Class c)
     {
         if(c == Integer.class) {

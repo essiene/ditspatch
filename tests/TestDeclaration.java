@@ -40,11 +40,43 @@ public class TestDeclaration extends TestCase
         TestDeclaration.checkPattern(Boolean.class, "false");
     }
 
-    public static void checkPattern(Class c, String s)
+    public void testAddVariableInitial()
     {
-        Pattern p = Pattern.compile(Declaration.toPattern(c));
+        Declaration d = new Declaration();
+        d.addVariable("var1", Integer.class);
+
+        assertEquals(Integer.class, d.getVariableType("var1"));
+        assertEquals("var1", d.getGroupName(0));
+        checkPattern(d.getPattern(), "123", 1);
+    }
+
+    public void testAddVariableSubsequent()
+    {
+        Declaration d = new Declaration();
+        d.addText("one");
+        d.addVariable("var1", Integer.class);
+
+        checkPattern(d.getPattern(), "one/123", 1);
+        checkPattern(d.getPattern(), "one/123", 1);
+
+        d.addVariable("var2", Boolean.class);
+
+        assertEquals(Boolean.class, d.getVariableType("var2"));
+        assertEquals("var2", d.getGroupName(1));
+        checkPattern(d.getPattern(), "one/123/false", 2);
+    }
+
+    private static void checkPattern(Class c, String s)
+    {
+        checkPattern(Declaration.toPattern(c), s, 1);
+    }
+    
+    private static void checkPattern(String pattern, String s, int size)
+    {
+        Pattern p = Pattern.compile(pattern);
         Matcher m = p.matcher(s);
         assertTrue(m.matches());
-        assertEquals(1, m.groupCount());
+        assertEquals(size, m.groupCount());
     }
+
 }
