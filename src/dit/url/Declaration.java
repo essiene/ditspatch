@@ -2,12 +2,39 @@ package dit.url;
 
 import java.util.*;
 
+import dit.url.ast.*;
+import dit.url.parser.*;
+
 public class Declaration
 {
     private Map<String,Class> variables = new HashMap();
     private Map<Integer, String> groups = new HashMap();
     private String pattern = "";
     private int currentGroup;
+
+    public static Declaration fromString(String s)
+    {
+        Parser p = new Parser(System.in);
+        return fromString(p, s);
+    }
+
+    public static Declaration fromString(Parser p, String s)
+    {
+
+        try {
+            p.ReInit(s); 
+            List<Ast> l = p.UrlDeclaration();
+
+            Declaration d = new Declaration();
+            for(Ast ast: l) {
+                d = ast.process(d);
+            }
+
+            return d;
+        } catch (ParseException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
 
     public Declaration()
     {

@@ -3,12 +3,20 @@ import junit.framework.*;
 import java.util.regex.*;
 
 import dit.url.*;
+import dit.url.parser.*;
 
 public class TestDeclaration extends TestCase
 {
+    private Parser p;
+
     public TestDeclaration(String s)
     {
         super(s);
+    }
+
+    public void setUp()
+    {
+        p = new Parser(System.in);
     }
 
     public void testAddTextInitial()
@@ -75,6 +83,24 @@ public class TestDeclaration extends TestCase
             fail("'var1' already defined and should not be added");
         } catch (ScopeException ex) {
         }
+    }
+
+    public void testFromStringSimple()
+    {
+        Declaration d = Declaration.fromString(p, "/one/");
+        assertEquals("^one$", d.getPattern());
+
+        d = Declaration.fromString(p, "/$id:Integer/");
+        assertEquals("^(\\d+)$", d.getPattern());
+    }
+
+    public void testFromStringComplex()
+    {
+        Declaration d = Declaration.fromString(p, "/one/two/three");
+        assertEquals("^one/two/three$", d.getPattern());
+
+        d = Declaration.fromString(p, "user/$id:Integer/$activate:Boolean/ok");
+        assertEquals("^user/(\\d+)/(true|false)/ok$", d.getPattern());
     }
 
     private static void checkPattern(Class c, String s)
