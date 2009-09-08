@@ -47,4 +47,34 @@ public class TestParser extends TestCase
 
         assertEquals("[AST{name:one,type:class java.lang.Boolean}]", l.toString());
     }
+
+    public void testMultipleText() throws ParseException
+    {
+        p.ReInit("one/two/3");
+
+        List<Ast> l = p.UrlDeclaration();
+
+        assertEquals("[AST{value:one}, AST{value:two}, AST{value:3}]", l.toString());
+    }
+
+    public void testMultipleMixed() throws ParseException
+    {
+        p.ReInit("one/$two:Integer/3/$flag:Boolean");
+
+        List<Ast> l = p.UrlDeclaration();
+
+        assertEquals("[AST{value:one}, AST{name:two,type:class java.lang.Integer}, AST{value:3}, AST{name:flag,type:class java.lang.Boolean}]", l.toString());
+    }
+
+    public void testDeclaringTypeForNormalTestShouldFail()
+    {
+        try {
+            p.ReInit("two:Integer");
+            List<Ast> l = p.UrlDeclaration();
+            fail("Allowing type definition for normal text");
+        } catch (ParseException ex) {
+        }
+    }
+
+
 }

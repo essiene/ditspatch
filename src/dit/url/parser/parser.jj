@@ -39,6 +39,7 @@ List<Ast> UrlDeclaration():
      <FORWARD_SLASH> 
      ast=UrlComponent() {list.add(ast); }
     )*
+    <EOF>
 
     { return list; }
 }
