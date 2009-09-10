@@ -1,0 +1,9 @@
+Make possible the following round trip action:
+
+    String s = "/some/$random:Integer/$pattern/";
+
+    Declaration d = Declaration.fromString(s);
+
+    s.equals(d.toString());
+
+
