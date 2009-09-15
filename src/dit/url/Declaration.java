@@ -38,7 +38,9 @@ public class Declaration
 
     public Declaration()
     {
-        this.currentGroup = 0;
+        //Regex group indexes effectively start from 1 as
+        //index 0 is the entire pattern itself
+        this.currentGroup = 1;
     }
 
     public void addText(String s)

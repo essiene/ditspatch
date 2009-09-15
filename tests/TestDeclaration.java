@@ -54,7 +54,7 @@ public class TestDeclaration extends TestCase
         d.addVariable("var1", Integer.class);
 
         assertEquals(Integer.class, d.getVariableType("var1"));
-        assertEquals("var1", d.getGroupName(0));
+        assertEquals("var1", d.getGroupName(1));
         checkPattern(d.getPattern(), "123", 1);
     }
 
@@ -70,7 +70,7 @@ public class TestDeclaration extends TestCase
         d.addVariable("var2", Boolean.class);
 
         assertEquals(Boolean.class, d.getVariableType("var2"));
-        assertEquals("var2", d.getGroupName(1));
+        assertEquals("var2", d.getGroupName(2));
         checkPattern(d.getPattern(), "one/123/false", 2);
     }
 
