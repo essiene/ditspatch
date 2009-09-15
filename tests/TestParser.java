@@ -21,12 +21,6 @@ public class TestParser extends TestCase
         p = new Parser(System.in);
     }
 
-    public void testTrim() 
-    {
-        assertEquals("one", Parser.trim("///one//////", '/'));
-        assertEquals("one/.two\\asdf.foo", Parser.trim("...one/.two\\asdf.foo.........", '.'));
-    }
-
     public void testSingleText() throws ParseException
     {
         p.ReInit("one");
