@@ -37,6 +37,12 @@ Actual Url: /user/user2/game/100/
 Will yield a String username with value = "user2" and an Integer game_id with
 value = 100
 
+Route r = new Route("user/$username:String/game/$game_id:Integer");
+MatchedUrl mu = r.matchUrl("/user/user2/game/100/");
+
+mu.getString("username"); //returns 'user2'
+mu.getInteger("game_id"); //returns '100'
+
 Class Dispatch
 ==============
 
