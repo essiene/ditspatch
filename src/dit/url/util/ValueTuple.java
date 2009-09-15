@@ -32,6 +32,10 @@ public class ValueTuple
         }
 
         if(type == Character.class) {
+            if(value.length() > 1) {
+                throw new ClassCastException("Expected a char, but got - '" + value + "'");
+            }
+
             return new Character(value.charAt(0));
         }
 
