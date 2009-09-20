@@ -19,17 +19,17 @@ public class MatchedUrl
         return (String) getValue(name);
     }
 
-    public Integer getInteger(String name)
+    public int getInt(String name)
     {
         return (Integer) getValue(name);
     }
 
-    public Character getCharacter(String name)
+    public char getChar(String name)
     {
         return (Character) getValue(name);
     }
 
-    public Boolean getBoolean(String name)
+    public boolean getBoolean(String name)
     {
         return (Boolean) getValue(name);
     }

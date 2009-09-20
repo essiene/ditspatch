@@ -40,12 +40,12 @@ public class TestMatchedUrl extends TestCase
 
     public void testGetInteger()
     {
-        assertTrue(555 == mu.getInteger("integerval"));
+        assertTrue(555 == mu.getInt("integerval"));
     }
 
     public void testGetCharacter()
     {
-        assertTrue('c' == mu.getCharacter("characterval"));
+        assertTrue('c' == mu.getChar("characterval"));
     }
 
     public void testGetBoolean()

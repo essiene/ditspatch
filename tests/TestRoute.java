@@ -36,7 +36,7 @@ public class TestRoute extends TestCase
         MatchedUrl mu = route.matchUrl("/user/bradpitt/m/");
 
         assertEquals("bradpitt", mu.getString("username"));
-        assertTrue('m' == mu.getCharacter("sex"));
+        assertTrue('m' == mu.getChar("sex"));
    }
 
    public void testMatchResultsInvalidTypes()
@@ -44,7 +44,7 @@ public class TestRoute extends TestCase
 
        try { 
            MatchedUrl mu = route.matchUrl("/user/bradpitt/m/"); 
-           mu.getCharacter("username"); 
+           mu.getChar("username"); 
            fail("'$username' is not of type 'char' ");
        } catch (ClassCastException ex) {
        }
