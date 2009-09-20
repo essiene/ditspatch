@@ -73,4 +73,27 @@ public class TestMatchedUrl extends TestCase
         }
     }
 
+    public void testGetTypes()
+    {
+        List<Class> classes = new LinkedList();
+
+        classes.add(String.class);
+        classes.add(int.class);
+        classes.add(char.class);
+        classes.add(boolean.class);
+
+        assertEquals(classes, mu.getTypes());
+    }
+
+    public void testGetValues()
+    {
+        List<Object> values = new LinkedList();
+        
+        values.add("A string value");
+        values.add(555);
+        values.add('c');
+        values.add(false);
+
+        assertEquals(values, mu.getValues());
+    }
 }

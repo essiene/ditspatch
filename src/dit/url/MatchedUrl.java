@@ -34,6 +34,30 @@ public class MatchedUrl
         return (Boolean) getValue(name);
     }
 
+    public List<Class> getTypes()
+    {
+        List<Class> l = new LinkedList();
+
+        for(ValueTuple vt: this.map.values()) {
+            Class c = vt.getType();
+            l.add(c);
+        }
+
+        return l;
+    }
+
+    public List<Object> getValues()
+    {
+        List<Object> l = new LinkedList();
+
+        for(ValueTuple vt: this.map.values()) {
+            Object o = vt.getValue();
+            l.add(o);
+        }
+
+        return l;
+    }
+
     private Object getValue(String name)
     {
         if(!this.map.containsKey(name)) {
