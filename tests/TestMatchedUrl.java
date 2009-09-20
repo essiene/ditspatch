@@ -21,13 +21,13 @@ public class TestMatchedUrl extends TestCase
         ValueTuple vt = new ValueTuple("A string value", String.class);
         map.put("stringvar", vt);
 
-        ValueTuple vt1 = new ValueTuple("555", Integer.class);
+        ValueTuple vt1 = new ValueTuple("555", int.class);
         map.put("integerval", vt1);
 
-        ValueTuple vt2 = new ValueTuple("c", Character.class);
+        ValueTuple vt2 = new ValueTuple("c", char.class);
         map.put("characterval", vt2);
 
-        ValueTuple vt3 = new ValueTuple("false", Boolean.class);
+        ValueTuple vt3 = new ValueTuple("false", boolean.class);
         map.put("booleanvar", vt3);
 
         mu = new MatchedUrl(map);

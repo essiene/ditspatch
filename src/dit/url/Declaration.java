@@ -79,7 +79,7 @@ public class Declaration
 
     public static String toPattern(Class c)
     {
-        if(c == Integer.class) {
+        if(c == int.class) {
             return "(\\d+)";
         }
 
@@ -87,11 +87,11 @@ public class Declaration
             return "(\\w+)";
         }
 
-        if(c == Character.class) {
+        if(c == char.class) {
             return "(.)";
         }
 
-        if(c == Boolean.class) {
+        if(c == boolean.class) {
             return "(true|false)";
         }
 

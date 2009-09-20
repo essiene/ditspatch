@@ -27,11 +27,11 @@ public class ValueTuple
             return value;
         }
 
-        if(type == Integer.class) {
+        if(type == int.class) {
             return new Integer(value);
         }
 
-        if(type == Character.class) {
+        if(type == char.class) {
             if(value.length() > 1) {
                 throw new ClassCastException("Expected a char, but got - '" + value + "'");
             }
@@ -39,7 +39,7 @@ public class ValueTuple
             return new Character(value.charAt(0));
         }
 
-        if(type == Boolean.class) {
+        if(type == boolean.class) {
             return new Boolean(value);
         }
 

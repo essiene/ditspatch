@@ -9,7 +9,7 @@ Url Declarations
 The core of Ditspatch is built around Url Declarations which look like:
 
     user/$username:String/activate
-    user/$username:String/game/$game_id:Integer
+    user/$username:String/game/$game_id:int
     user/$username
 
 Ditspatch uses these declarations to build regular expressions that will match
@@ -31,13 +31,13 @@ After matching urls against the declarations, Ditspatch will also extract the
 values of the variables in those matched positions in the url. So for instance
 the following declaration applied to the actual url below:
 
-Declaration: user/$username:String/game/$game_id:Integer
+Declaration: user/$username:String/game/$game_id:int
 Actual Url: /user/user2/game/100/
 
 Will yield a String username with value = "user2" and an Integer game_id with
 value = 100
 
-Route r = new Route("user/$username:String/game/$game_id:Integer");
+Route r = new Route("user/$username:String/game/$game_id:int");
 MatchedUrl mu = r.matchUrl("/user/user2/game/100/");
 
 mu.getString("username"); //returns 'user2'
@@ -52,13 +52,13 @@ extracted from the incoming URLs with their proper type signature.
 
 For instance, supposing we have the below:
 
-Declaration: user/$username:String/game/$game_id:Integer
+Declaration: user/$username:String/game/$game_id:int
 Actual Url: /user/user2/game/100/
 Http Method: GET
 Destination Object: UserGame.class
 
 Router r = new Router();
-r.addRoute("user/$username:String/game/$game_id:Integer", UserGame.class);
+r.addRoute("user/$username:String/game/$game_id:int", UserGame.class);
 
 // Later on we can call the dispatch method:
 
@@ -69,7 +69,7 @@ class which will have to be defined thus:
 
 public class UserGame
 {
-    public IResponse GET(IRequest req, String username, Integer game_id)
+    public IResponse GET(IRequest req, String username, int game_id)
     {
         //do funky stuff here and return a Response object
     }

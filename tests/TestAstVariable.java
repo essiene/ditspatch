@@ -12,25 +12,25 @@ public class TestAstVariable extends TestCase
 
     public void testConstructor()
     {
-        Variable v = new Variable("var1", "Integer");
+        Variable v = new Variable("var1", "int");
         assertEquals("var1", v.getName());
-        assertEquals(Integer.class, v.getType());
+        assertEquals(int.class, v.getType());
 
         v = new Variable("var1", "String");
         assertEquals(String.class, v.getType());
 
-        v = new Variable("var1", "Character");
-        assertEquals(Character.class, v.getType());
+        v = new Variable("var1", "char");
+        assertEquals(char.class, v.getType());
 
-        v = new Variable("var1", "Boolean");
-        assertEquals(Boolean.class, v.getType());
+        v = new Variable("var1", "boolean");
+        assertEquals(boolean.class, v.getType());
     }
 
     public void testConstructorWithWrongType()
     {
         try { 
-            Variable v = new Variable("var1", "Float");
-            fail("Float should not be supported");
+            Variable v = new Variable("var1", "float");
+            fail("'float' should not be supported");
         } catch (IllegalArgumentException ex) {
         }
     }
@@ -39,7 +39,7 @@ public class TestAstVariable extends TestCase
     {
         Declaration d = new Declaration();
         Text t = new Text("one");
-        Variable v = new Variable("var1", "Integer");
+        Variable v = new Variable("var1", "int");
 
         d = t.process(d);
         d = v.process(d);

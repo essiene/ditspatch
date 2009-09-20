@@ -41,11 +41,11 @@ public class TestParser extends TestCase
 
     public void testSingleTypedVariable() throws ParseException
     {
-        p.ReInit("$one:Boolean");
+        p.ReInit("$one:boolean");
 
         List<Ast> l = p.UrlDeclaration();
 
-        assertEquals("[AST{name:one,type:class java.lang.Boolean}]", l.toString());
+        assertEquals("[AST{name:one,type:boolean}]", l.toString());
     }
 
     public void testMultipleText() throws ParseException
@@ -59,17 +59,17 @@ public class TestParser extends TestCase
 
     public void testMultipleMixed() throws ParseException
     {
-        p.ReInit("/one/$two:Integer/3/$flag:Boolean/");
+        p.ReInit("/one/$two:int/3/$flag:boolean/");
 
         List<Ast> l = p.UrlDeclaration();
 
-        assertEquals("[AST{value:one}, AST{name:two,type:class java.lang.Integer}, AST{value:3}, AST{name:flag,type:class java.lang.Boolean}]", l.toString());
+        assertEquals("[AST{value:one}, AST{name:two,type:int}, AST{value:3}, AST{name:flag,type:boolean}]", l.toString());
     }
 
     public void testDeclaringTypeForNormalTestShouldFail()
     {
         try {
-            p.ReInit("two:Integer");
+            p.ReInit("two:int");
             List<Ast> l = p.UrlDeclaration();
             fail("Allowing type definition for normal text");
         } catch (ParseException ex) {

@@ -19,16 +19,16 @@ public class TestValueTuple extends TestCase
 
     public void testValidIntegerDeclaration()
     {
-        ValueTuple vt = new ValueTuple("555", Integer.class);
+        ValueTuple vt = new ValueTuple("555", int.class);
 
-        assertEquals(Integer.class, vt.getType());
+        assertEquals(int.class, vt.getType());
         assertTrue(555 == (Integer) vt.getValue());
     }
 
     public void testInvalidTypeDeclaration()
     {
         try {
-            ValueTuple vt = new ValueTuple("A String", Integer.class);
+            ValueTuple vt = new ValueTuple("A String", int.class);
             fail("'A String' is not a valid integer value");
         } catch (NumberFormatException ex) {
         }

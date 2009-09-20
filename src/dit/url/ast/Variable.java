@@ -12,8 +12,8 @@ public class Variable implements Ast
         this.name = name;
         
         type = type.trim();
-        if(type.equals("Integer")) {
-            this.type = Integer.class;
+        if(type.equals("int")) {
+            this.type = int.class;
             return;
         } 
 
@@ -22,13 +22,13 @@ public class Variable implements Ast
             return;
         }
 
-        if(type.equals("Character")) {
-            this.type = Character.class;
+        if(type.equals("char")) {
+            this.type = char.class;
             return;
         }
 
-        if(type.equals("Boolean")) {
-            this.type = Boolean.class;
+        if(type.equals("boolean")) {
+            this.type = boolean.class;
             return;
         }
 

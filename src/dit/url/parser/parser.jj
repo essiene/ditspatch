@@ -23,7 +23,7 @@ PARSER_END(Parser)
 TOKEN : { <VARIABLE : "$" (["a" - "z"] | ["A" - "Z"] | "_")(["a" - "z"] | ["A" -
         "Z"] | "_" | ["0" - "9"])+> }
 
-TOKEN: {<TYPE: ("Integer" | "String" | "Character" | "Boolean")>}
+TOKEN: {<TYPE: ("int" | "String" | "char" | "boolean")>}
 
 TOKEN: {<TYPE_DECLARATOR: ":">}
 TOKEN: {<FORWARD_SLASH: "/">}

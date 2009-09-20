@@ -13,7 +13,7 @@ public class TestRoute extends TestCase
 
     public void setUp()
     {
-        route = new Route("/user/$username:String/$sex:Character");
+        route = new Route("/user/$username:String/$sex:char");
     }
 
     public void testMatchingSuccessfull()
@@ -45,7 +45,7 @@ public class TestRoute extends TestCase
        try { 
            MatchedUrl mu = route.matchUrl("/user/bradpitt/m/"); 
            mu.getCharacter("username"); 
-           fail("'$username' is not of type Character");
+           fail("'$username' is not of type 'char' ");
        } catch (ClassCastException ex) {
        }
    }
